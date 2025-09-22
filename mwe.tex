@@ -1,0 +1,26 @@
+\documentclass{article}
+
+% Paquetes necesarios
+\usepackage[table]{xcolor}   % <-- define \rowcolor
+\usepackage{tabularx,ragged2e,array,booktabs,makecell}
+\newcolumntype{L}{>{\RaggedRight\arraybackslash}X}
+\newcolumntype{C}{>{\Centering\arraybackslash}X}
+
+% (Opcional) SOS Tablas
+\makeatletter
+\providecommand{\tabularxcolumn}[1]{m{#1}}
+\renewcommand{\tabularxcolumn}[1]{m{#1}}
+\@ifundefined{TX@pre@hook}{}{\def\TX@pre@hook{}}
+\@ifundefined{TX@post@hook}{}{\def\TX@post@hook{}}
+\makeatother
+
+\begin{document}
+
+\begin{tabularx}{\linewidth}{@{}|c|C|c|@{}}
+\hline
+\rowcolor[HTML]{C0C0C0}
+\textbf{A} & \textbf{B} & \textbf{C} \\ \hline
+1 & texto de prueba & 2 \\ \hline
+\end{tabularx}
+
+\end{document}
