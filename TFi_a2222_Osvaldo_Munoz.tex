@@ -2,8 +2,8 @@
 {charter}
  
 
-% El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
-\titulo{Estimación probabilística y calibración con ML para el control de desvíos respecto al baseline en proyectos bajo PMI/PMBOK} 
+% El títulosde la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
+\titulo{SPCP: Sistema Probabilístico y de ML para Seguimiento y Control de Proyectos} 
 
 
 \posgrado{Carrera de Especialización en Inteligencia Artificial}
@@ -27,7 +27,7 @@
 \fechaFINALTrabajo{TBD}	%Fecha de defensa pública del trabajo final
 
 \begin{document}
-
+\sloppy
 \maketitle
 \thispagestyle{empty}
 \pagebreak
@@ -151,7 +151,7 @@ Los lineamientos del PMI establecen el ciclo de vida de un proyecto en 5 fases, 
 
 \subsection{Motivación}
 
-En su recorrido profesional de los \eng{projects managers} han tenido que enfrentar retos y desafíos íntimamente relacionados a la gestión, seguimiento y control de proyectos, en los que la planificación se realiza  principalmente con argumentos y bases de verosimilitud razonable, pero en el despliegue surgen desfases, incumplimientos y subestimaciones, entre otros factores, que derivan en impactos como:
+En su recorrido profesional, los \eng{projects managers} han tenido que enfrentar retos y desafíos íntimamente relacionados a la gestión, seguimiento y control de proyectos, en los que la planificación se realiza  principalmente con argumentos y bases de verosimilitud razonable, pero en el despliegue surgen desfases, incumplimientos y subestimaciones, entre otros factores, que derivan en impactos como:
 
 \begin{itemize}
 	\item Objetivos estratégicos.
@@ -206,7 +206,7 @@ El macro proceso clásico compuesto de 5 fases para la gestión de proyectos, se
 
 \FloatBarrier
 
-Las entradas y salidas que requieren cada una de las cinco fases se describen en las figuras 4 a 8 como sigue: 
+Las entradas y salidas que requieren y generan cada una de las cinco fases se describen en las figuras 4 a 8 como sigue: 
 
 % --- Fase 1: Inicio ---
 \begin{figure}[h]
@@ -272,7 +272,7 @@ De acuerdo a la experiencia del cliente, los proyectos se gestionan en las fases
 	\item Habilidades y conocimientos de la oficina de gerencia del proyecto (PMO).
 \end{itemize}
 
-Debido a los grados de incertidumbre que existen en las fases 3 y 4 de la gestión de proyectos, el cliente requiere contar con un modelo que le proporcione, a partir de los datos que genera el modelo clásico, información complementaria y confiable mediante indicadores y ratios para la toma de decisiones oportuna. 
+Debido a los grados de incertidumbre que existen en las fases 3 y 4 de la gestión de proyectos, el cliente requiere contar con un modelo que le proporcione, a partir de los datos que genera el modelo clásico, información complementaria y confiable mediante indicadores y ratios para tomar decisiones oportunas. 
 Y de esta menera poder anticipar, mitigar y, en lo posible, evitar los desvíos e impactos en los resultados esperados del proyecto en cuanto a alcance, tiempo, costo y calidad propuestos al inicio en el \eng{statement of work} (SOW).
 
 \subsection{Preguntas centrales}
@@ -496,7 +496,12 @@ El proyecto incluye:
 	\item Entregar un tablero/notebooks reproducibles y una guía de uso para PMs. 
 \end{itemize}
 
-El presente proyecto no incluye proyectos sin \eng{baseline}; datos no estructurados si no es posible normalizarlos; estimación de recursos humanos a nivel individual (si carece de datos).
+El proyecto no incluye:
+\begin{itemize}
+	\item Proyectos sin \eng{baseline}.
+	\item Datos no estructurados, o si no es posible normalizarlos.
+	\item Estimación de recursos humanos a nivel individual (si hubiera faltante de datos). 
+\end{itemize}
 
 \section{5. Supuestos del proyecto}
 \label{sec:supuestos}
@@ -510,62 +515,155 @@ Para el desarrollo del presente proyecto se establecen las siguientes hipótesis
 	\item $\text{TCN} / \text{LSTM}$ ($\text{\eng{Temporal Convolutional Network}} / \text{\eng{Long Short-Term Memory}}$) reduce el \eng{Mean Absolute Error} (MAE) cuando existen dependencias temporales fuertes.
 \end{itemize}
 
-Criterio de decisión: se privilegiarán modelos con mejor calibración (\eng{Expected Calibration Error} (ECE) / cobertura) y de utilidad para el PM (alertas útiles), aun si los métodos clásicos fueran competitivos.
+% (analizar y revisar donde va este criterio) Criterio de decisión: se privilegiarán modelos con mejor calibración (\eng{Expected Calibration Error} (ECE) / cobertura) y de utilidad para el PM (alertas útiles), aun si los métodos clásicos fueran competitivos.
 
 \section{6. Requerimientos}
 \label{sec:requerimientos}
 
-\begin{consigna}{red} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
-Los requerimientos deben enumerarse y de ser posible estar agrupados por afinidad, por ejemplo:
+\subsection{Funcionales (FR)}
+\begin{description}
+  \item[\textbf{FR-01 Ingesta al modelo unificado (DER vigente)}] El sistema debe aceptar datos por CSV/APIs y normalizarlos al modelo unificado del SPCP, conforme al DER vigente (todas las entidades definidas), aplicando reglas de tipos, obligatorios y PK/FK del diccionario.
 
-\begin{enumerate}
-	\item Requerimientos funcionales:
-		\begin{enumerate}
-			\item El sistema debe...
-			\item Tal componente debe...
-			\item El usuario debe poder...
-		\end{enumerate}
-	\item Requerimientos de documentación:
-		\begin{enumerate}
-			\item Requerimiento 1.
-			\item Requerimiento 2 (prioridad menor)
-		\end{enumerate}
-	\item Requerimiento de testing...
-	\item Requerimientos de la interfaz...
-	\item Requerimientos interoperabilidad...
-	\item etc...
-\end{enumerate}
+  \item[\textbf{FR-02 Validación de dataset}] Validar columnas, tipos, PK/FK e impedir acumulados decrecientes (PV/EV/AC).
 
-Leyendo los requerimientos se debe poder interpretar cómo será el proyecto y su funcionalidad.
+  \item[\textbf{FR-03 Cálculo EVM}] Calcular CPI, SPI, CV, SV, EAC (variantes) y TCPI.
 
-Indicar claramente cuál es la prioridad entre los distintos requerimientos y si hay requerimientos opcionales. 
+  \item[\textbf{FR-04 Monte Carlo (cronograma)}] Simular con PERT (a,m,b) $\geq$ 10{,}000 corridas; entregar finish P50/P80/P90 y $P(\text{Finish}>\text{Baseline})$.
 
-\textbf{¡¡¡No olvidarse de que los requerimientos incluyen a las regulaciones y normas vigentes!!!}
+  \item[\textbf{FR-05 Bayes (desempeño)}] Actualizar una red bayesiana por corte con observables (CPI, SPI, exposición de riesgo, cambios 7d, retrabajo, demoras proveedor) y estimar $P(\text{EAC}>\text{BAC})$ y \textit{drivers}.
 
-Y al escribirlos seguir las siguientes reglas:
-\begin{itemize}
-	\item Ser breve y conciso (nadie lee cosas largas). 
-	\item Ser específico: no dejar lugar a confusiones.
-	\item Expresar los requerimientos en términos que sean cuantificables y medibles.
-\end{itemize}
+  \item[\textbf{FR-06 ML baseline}] Entrenar un modelo ML (p.ej., XGBoost) para EAC a t+4 semanas y probabilidad de sobrecosto $>10\%$, con importancia/SHAP.
 
-\end{consigna} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
+  \item[\textbf{FR-07 Fusión de señales y fiabilidad}] Combinar \textbf{EVM + Bayes + ML} mediante \textit{ensamble} (promedio ponderado o stacking) para producir: (i) \textbf{EAC final} y (ii) \textbf{probabilidad de sobrecosto}. 
+  %Aplicar un \textbf{mapeo monotónico (isotónico)} que alinee las probabilidades con las frecuencias observadas en validación, cumpliendo: MAE(EAC) del ensamble $\le$ EVM $-10\%$, cobertura P50 = 45--55\%, P80 = 75--85\%, y Brier $\le 0.18$.
+
+  \item[\textbf{FR-08 Visualización ejecutiva}] El sistema debe presentar un \textbf{panel de indicadores ejecutivos} (KPIs de cabecera: P50/P80/P90 de EAC, $P(\text{EAC}>\text{BAC})$, TCPI), además de \textbf{curvas S}, \textbf{histograma de simulaciones} y una \textbf{tabla ejecutiva} con descarga CSV/PDF.
+
+  \item[\textbf{FR-09 Escenarios}] Permitir \textit{“what-if”} (cambios/riesgos) y recalcular percentiles y $P(\text{EAC}>\text{BAC})$.
+
+  \item[\textbf{FR-10 Cortes y trazabilidad}] Emitir \textbf{cortes semanales} del dataset con \textbf{manifiesto y huella (hash)}, y guardar la \textbf{trazabilidad de cálculos} por corte para asegurar \textbf{reproducibilidad}.
+
+  \item[\textbf{FR-11 Descarga y API}] Permitir la descarga de resultados (CSV/PDF/PNG) y su consulta por API HTTP sencilla.
+
+\end{description}
+
+\subsection{Documentación (DOC)}
+\begin{description}
+  \item[\textbf{DOC-01 DER y diccionario}] Entregar diagrama de entidad-relación (DER) y diccionario de datos (definiciones, dominios, \textit{Primary Key / Foreign Key} (PK/FK)).
+
+  \item[\textbf{DOC-02 Mapeo de fuentes}] Matriz Origen$\rightarrow$modelo unificado por campo (PMIS/ERP/Jira/HR).
+
+  \item[\textbf{DOC-03 Manual de usuario}] Flujo de carga, validación, ejecución, dashboards y exportaciones con capturas.
+
+  \item[\textbf{DOC-04 Manual de operación}] Jobs, \textit{seeds}, variables, backups, rotación de contraseñas, monitoreo.
+
+  \item[\textbf{DOC-05 DOC-05 — Ficha del modelo y de la red bayesiana}] Datos, métricas, deriva de datos, límites de uso y política de re-entrenamiento; incluir en la ficha de la BN los nodos, observables y supuestos.
+
+  \item[\textbf{DOC-06 Plan de pruebas}] Casos de prueba para todos los requerimientos aplicables (funcionales, interfaz de usuario, integración, no funcionales, etc.), con criterios de aceptación y trazabilidad.
+
+\end{description}
+
+% Seguir aquí
+
+\subsection{Testing (TEST)}
+\begin{description}
+  \item[\textbf{TEST-01 Pruebas unitarias de ETL}] Cobertura $\geq$ 80\% en los módulos de lectura y normalización de datos (parsers/normalizadores).
+
+  \item[\textbf{TEST-02 Contrato de datos}] Validación del esquema durante la integración continua (CI); el proceso de build debe fallar ante cambios incompatibles.
+
+  \item[\textbf{TEST-03 Validación de la red bayesiana (BN)}] Pruebas de posterior predictivo y análisis de sensibilidad de nodos para verificar la robustez de la BN.
+
+  \item[\textbf{TEST-04 Modelo Monte Carlo}] Ejecuciones reproducibles (uso de semilla y validación de tolerancias en percentiles).
+
+  \item[\textbf{TEST-05 Validación de modelos de ML}] Validación cruzada \textit{k-fold} con reporte de MAE/RMSE y verificación de curva de calibración aceptable.
+
+  \item[\textbf{TEST-06 Backtesting}] Validación \textit{rolling-origin} vs. cortes históricos para EAC/fechas (MAE/RMSE y calibración).
+
+  \item[\textbf{TEST-07 Integración con APIs}] En caso que aplique, pruebas con simulación controlada para Jira/PMIS/ERP, incluyendo casos de borde (valores nulos y duplicados).
+
+  \item[\textbf{TEST-08 Desempeño del panel}] El dashboard inicial debe cargar en $\leq$ 5 segundos (p95) como meta ideal, y $\leq$ 10 segundos (p95) como meta mínima aceptable, para 12 meses de datos y 5,000 actividades.
+
+  \item[\textbf{TEST-09 Seguridad}] Escaneo de dependencias y contraseñas, con verificación de controles básicos de acceso (RBAC)
+
+  \item[\textbf{TEST-10 Pruebas de aceptación de usuario (UAT)}] Ejecución de 10 escenarios de negocio validados y firmados por el cliente.
+
+\end{description}
+
+\subsection{Interfaz de usuario (UI)}
+\begin{description}
+  \item[\textbf{UI-01 Diseño web adaptable}] Visualización correcta en pantallas desde 1366$\times$768 en adelante; versión móvil de solo lectura.
+
+  \item[\textbf{UI-02 Indicadores claros (KPI)}] Tarjetas con EAC P50/P80/P90, $P(\text{EAC}>\text{BAC})$, TCPI con leyenda.
+
+  \item[\textbf{UI-03 Gráficos principales}] S-curves, histograma de simulaciones, tendencias CPI/SPI y \textit{waterfall} de EAC.
+
+  \item[\textbf{UI-04 Navegación y trazabilidad}] Flujo de exploración: Entregable $\rightarrow$ Actividades $\rightarrow$ Riesgos/Cambios vinculados.
+
+  \item[\textbf{UI-05 Explicabilidad combinada}] Panel de \textbf{SHAP/feature importance} (ML) y sensibilidad bayesiana (efecto de observables en posteriors), acompañado de texto breve.
+
+   \item[\textbf{UI-06 Exportación}] Exportar vistas clave en CSV, PDF y PNG con un solo clic.
+
+\end{description}
+
+\subsection{Datos (DATA)}
+\begin{description}
+  \item[\textbf{DATA-01 Modelo unificado (DER vigente)}] Usar únicamente las columnas definidas en el esquema oficial; no se permiten campos extra ad-hoc.
+
+  \item[\textbf{DATA-02 Formato de fechas}] Todas las fechas en formato YYYY-MM-DD y status\_date semanal consistente.
+
+  \item[\textbf{DATA-03 Identificadores (IDs)}] Únicos, estables, sin espacios; no reciclar IDs.
+
+  \item[\textbf{DATA-04 Calidad de datoa}] Valores faltantes deben estar explícitos (no NaN); acumulados no pueden decrecer; moneda consistente dentro de cada proyecto.
+
+  \item[\textbf{DATA-05 Temporalidad}] Separar \textit{train/val/test} por tiempo (sin datos futuros); usar solo datos hasta cada fecha de corte.
+
+\end{description}
+
+\subsection{De despliegue/DevOps (DEV)}
+\begin{description}
+  \item[\textbf{DEV-01 Empaquetado}] Implementación en \textit{Docker}, usando variables de entorno para rutas y credenciales.
+
+  \item[\textbf{DEV-02 Datos de ejemplo (seeds)}] Dataset demo reproducible para pruebas y aceptación de usuario (UAT).
+  
+  \item[\textbf{DEV-03 Jobs automáticos}] Orquestación del corte semanal y generación de reportes/exportables.
+  
+  \item[\textbf{DEV-04 Copias de respaldo (backups)}] Retención de snapshots y outputs durante al menos 6 meses, con verificación periódica de restauración.
+  
+  \item[\textbf{DEV-05 Operaciones de ML (MLOps)}] Registro de modelos, versionado de artefactos (modelo, features, semillas) y política de reentrenamiento.
+
+\end{description}
+
 
 \section{7. Historias de usuarios (\textit{Product backlog})}
 \label{sec:backlog}
 
-\begin{consigna}{red}
-Descripción: en esta sección se deben incluir las historias de usuarios y su ponderación (\textit{history points}). Recordar que las historias de usuarios son descripciones cortas y simples de una característica contada desde la perspectiva de la persona que desea la nueva capacidad, generalmente un usuario o cliente del sistema. La ponderación es un número entero que representa el tamaño de la historia comparada con otras historias de similar tipo.
+La estimación de cada historia se basa en \textbf{complejidad}, \textbf{dificultad} e \textbf{incertidumbre}.
+Si la suma excede el máximo usual (20), se revisan las ponderaciones, especialmente la incertidumbre, ajustándolas a la realidad del SPCP donde los datos y modelos ya están definidos.
+De esta forma se evita inflar artificialmente las estimaciones y se mantiene la coherencia con la escala de Fibonacci modificada.
 
-Se debe indicar explícitamente el criterio para calcular los \textit{story points} de cada historia.
+\subsection*{Backlog inicial:}
 
-El formato propuesto es: 
 \begin{enumerate}
-\item ``Como [rol] quiero [tal cosa] para [tal otra cosa]."
+  \item Como jefe de PMs (cliente interno) quiero comparar el desempeño de todos mis proyectos en un panel consolidado para identificar rápidamente cuáles necesitan intervención.\\
+  \textit{Story points: 20 (complejidad 6, dificultad 6, incertidumbre 5)}
 
-\textit{Story points}: 8 (complejidad: 3, dificultad: 2, incertidumbre: 3)
+  \item Como analista de riesgos quiero ejecutar escenarios \textit{what-if} modificando riesgos o duraciones críticas para ver cómo cambia la probabilidad de sobrecosto.\\
+  \textit{Story points: 13 (complejidad 5, dificultad 4, incertidumbre 4)}
+
+  \item Como usuario ejecutivo quiero descargar en un clic un reporte en PDF con la tabla de indicadores clave para llevarlo al comité de control.\\
+  \textit{Story points: 8 (complejidad 3, dificultad 2, incertidumbre 3)}
+
+  \item Como administrador del sistema quiero tener cortes semanales versionados con 
+  \texttt{manifest + hash} para asegurar trazabilidad y reproducibilidad de resultados.\\
+  \textit{Story points: 8 (complejidad 3, dificultad 3, incertidumbre 2)}
+
+  \item Como PM quiero ver un panel con P50/P80/P90 de EAC y \texttt{P(EAC > BAC)} 
+  para monitorear rápidamente la proyección de costos de mi proyecto.\\
+  \textit{Story points: 5 (complejidad 2, dificultad 2, incertidumbre 1)}
+
+  \item Como usuario externo al sistema quiero consultar un servicio sencillo que me entregue percentiles y alertas para integrar los resultados del SPCP en otras aplicaciones.\\
+  \textit{Story points: 5 (complejidad 2, dificultad 2, incertidumbre 1)}
 \end{enumerate}
-\end{consigna}
 
 \section{8. Entregables principales del proyecto}
 \label{sec:entregables}

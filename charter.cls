@@ -93,6 +93,10 @@
 
 % Definiciones de OM
 \newcommand{\eng}[1]{\textit{#1}} % itálicas para términos en inglés
+\newcommand{\SystemShort}{SPCP}
+\newcommand{\SystemFull}{Sistema Probabilístico y de ML para Seguimiento y Control de Proyectos}
+\newcommand{\SystemMethods}{EVM, Monte Carlo, Bayes y ML}
+\newcommand{\SystemFirst}{\textbf{\SystemShort}: \SystemFull, que integra \emph{\SystemMethods}.}
 \titlespacing*{\subsection}{0pt}{0.5em}{0.5cm} % subsección
 
 % Estilos compactos para los diagramas PMI
