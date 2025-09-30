@@ -151,7 +151,7 @@ Los lineamientos del PMI establecen el ciclo de vida de un proyecto en 5 fases, 
 
 \subsection{Motivación}
 
-En su recorrido profesional, los \eng{projects managers} han tenido que enfrentar retos y desafíos íntimamente relacionados a la gestión, seguimiento y control de proyectos, en los que la planificación se realiza  principalmente con argumentos y bases de verosimilitud razonable, pero en el despliegue surgen desfases, incumplimientos y subestimaciones, entre otros factores, que derivan en impactos como:
+En su recorrido profesional, los \eng{projects managers} han tenido que enfrentar retos y desafíos íntimamente relacionados con la gestión, seguimiento y control de proyectos, en los que la planificación se realiza  principalmente con argumentos y bases de verosimilitud razonable, pero en el despliegue surgen desfases, incumplimientos y subestimaciones, entre otros factores, que derivan en impactos como:
 
 \begin{itemize}
 	\item Objetivos estratégicos.
@@ -369,9 +369,11 @@ La figura 9 es un esquema de bloques de la solución propuesta:
 
 \subsection{Glosario de siglas}
 
+En el contexto del proyecto se utilizan siglas y abreviaturas de uso común en la gestión de proyectos y en el ámbito de la inteligencia artificial. A continuación, se presenta una tabla con las siglas más relevantes y su significado:
+
 \begin{table}[h]
 \centering
-\caption{Siglas utilizadas en esta documento y su significado}
+\caption{Siglas utilizadas en este documento y su significado}
 \begin{tabularx}{\textwidth}{lY}
 \toprule
 \textbf{Sigla} & \textbf{Concepto / significado} \\
@@ -499,7 +501,7 @@ El proyecto incluye:
 El proyecto no incluye:
 \begin{itemize}
 	\item Proyectos sin \eng{baseline}.
-	\item Datos no estructurados, o si no es posible normalizarlos.
+	\item Datos no estructurados, o imposible de ser normalizados.
 	\item Estimación de recursos humanos a nivel individual (si hubiera faltante de datos). 
 \end{itemize}
 
@@ -520,130 +522,151 @@ Para el desarrollo del presente proyecto se establecen las siguientes hipótesis
 \section{6. Requerimientos}
 \label{sec:requerimientos}
 
+Los requerimientos del proyecto SPCP se organizan en seis categorías que en conjunto cubren el ciclo de vida completo del sistema, desde la ingesta y procesamiento de datos hasta su despliegue y operación continua. 
+Cada categoría refleja un conjunto de expectativas verificables: 
+
+\begin{itemize}
+  \item Funcionales (FR): describen las capacidades esenciales del sistema (ingesta, validación, modelos probabilísticos y de ML, visualización ejecutiva y escenarios).
+  \item Documentación (DOC): aseguran la existencia de artefactos técnicos y guías de uso que garanticen reproducibilidad, transferencia de conocimiento y trazabilidad.
+  \item Testing (TEST): definen las validaciones necesarias para verificar exactitud, desempeño, seguridad y aceptación de usuario.
+  \item Interfaz de usuario (UI): establecen los criterios de diseño y usabilidad para paneles, indicadores y explicabilidad de resultados.
+  \item Datos (DATA): precisan las normas de calidad, formato, temporalidad y consistencia requeridas en los datasets.
+  \item Despliegue/DevOps (DEV): especifican prácticas de empaquetado, orquestación, respaldos y MLOps que habilitan la operación estable del sistema.
+  \item Regulaciones y Normas (REG): establecen lineamientos de cumplimiento con estándares de calidad, seguridad, privacidad de datos y mejores prácticas internacionales.
+\end{itemize}
+
+De esta manera, los requerimientos no solo contemplan la funcionalidad analítica del SPCP, sino también la documentación, validación, interfaz, gestión de datos, operación continua y el marco regulatorio necesario, asegurando una visión integral alineada con estándares de gestión de proyectos, ingeniería de software y normativas aplicables.
+
+
 \subsection{Funcionales (FR)}
 \begin{description}
-  \item[\textbf{FR-01 Ingesta al modelo unificado (DER vigente)}] El sistema debe aceptar datos por CSV/APIs y normalizarlos al modelo unificado del SPCP, conforme al DER vigente (todas las entidades definidas), aplicando reglas de tipos, obligatorios y PK/FK del diccionario.
+  \item FR-01 Ingesta al modelo unificado (DER vigente): El sistema debe aceptar datos por CSV/APIs y normalizarlos al modelo unificado del SPCP, conforme al DER vigente (todas las entidades definidas), aplicando reglas de tipos, obligatorios y PK/FK del diccionario.
 
-  \item[\textbf{FR-02 Validación de dataset}] Validar columnas, tipos, PK/FK e impedir acumulados decrecientes (PV/EV/AC).
+  \item FR-02 Validación de dataset: Validar columnas, tipos, PK/FK e impedir acumulados decrecientes (PV/EV/AC).
 
-  \item[\textbf{FR-03 Cálculo EVM}] Calcular CPI, SPI, CV, SV, EAC (variantes) y TCPI.
+  \item FR-03 Cálculo EVM: Calcular CPI, SPI, CV, SV, EAC (variantes) y TCPI.
 
-  \item[\textbf{FR-04 Monte Carlo (cronograma)}] Simular con PERT (a,m,b) $\geq$ 10{,}000 corridas; entregar finish P50/P80/P90 y $P(\text{Finish}>\text{Baseline})$.
+  \item FR-04 Monte Carlo (cronograma): Simular con PERT (a,m,b) $\geq$ 10{,}000 corridas; entregar finish P50/P80/P90 y $P(\text{Finish}>\text{Baseline})$.
 
-  \item[\textbf{FR-05 Bayes (desempeño)}] Actualizar una red bayesiana por corte con observables (CPI, SPI, exposición de riesgo, cambios 7d, retrabajo, demoras proveedor) y estimar $P(\text{EAC}>\text{BAC})$ y \textit{drivers}.
+  \item FR-05 Bayes (desempeño): Actualizar una red bayesiana por corte con observables (CPI, SPI, exposición de riesgo, cambios 7d, retrabajo, demoras proveedor) y estimar $P(\text{EAC}>\text{BAC})$ y \textit{drivers}.
 
-  \item[\textbf{FR-06 ML baseline}] Entrenar un modelo ML (p.ej., XGBoost) para EAC a t+4 semanas y probabilidad de sobrecosto $>10\%$, con importancia/SHAP.
+  \item FR-06 ML baseline: Entrenar un modelo ML (p.ej., XGBoost) para EAC a t+4 semanas y probabilidad de sobrecosto $>10\%$, con importancia/SHAP.
 
-  \item[\textbf{FR-07 Fusión de señales y fiabilidad}] Combinar \textbf{EVM + Bayes + ML} mediante \textit{ensamble} (promedio ponderado o stacking) para producir: (i) \textbf{EAC final} y (ii) \textbf{probabilidad de sobrecosto}. 
-  %Aplicar un \textbf{mapeo monotónico (isotónico)} que alinee las probabilidades con las frecuencias observadas en validación, cumpliendo: MAE(EAC) del ensamble $\le$ EVM $-10\%$, cobertura P50 = 45--55\%, P80 = 75--85\%, y Brier $\le 0.18$.
+  \item FR-07 Fusión de señales y fiabilidad: Combinar \textbf{EVM + Bayes + ML} mediante \textit{ensamble} (promedio ponderado o stacking) para producir: (i) \textbf{EAC final} y (ii) \textbf{probabilidad de sobrecosto}. 
 
-  \item[\textbf{FR-08 Visualización ejecutiva}] El sistema debe presentar un \textbf{panel de indicadores ejecutivos} (KPIs de cabecera: P50/P80/P90 de EAC, $P(\text{EAC}>\text{BAC})$, TCPI), además de \textbf{curvas S}, \textbf{histograma de simulaciones} y una \textbf{tabla ejecutiva} con descarga CSV/PDF.
+  \item FR-08 Visualización ejecutiva: El sistema debe presentar un \textbf{panel de indicadores ejecutivos} (KPIs de cabecera: P50/P80/P90 de EAC, $P(\text{EAC}>\text{BAC})$, TCPI), además de \textbf{curvas S}, \textbf{histograma de simulaciones} y una \textbf{tabla ejecutiva} con descarga CSV/PDF.
 
-  \item[\textbf{FR-09 Escenarios}] Permitir \textit{“what-if”} (cambios/riesgos) y recalcular percentiles y $P(\text{EAC}>\text{BAC})$.
+  \item FR-09 Escenarios: Permitir \textit{“what-if”} (cambios/riesgos) y recalcular percentiles y $P(\text{EAC}>\text{BAC})$.
 
-  \item[\textbf{FR-10 Cortes y trazabilidad}] Emitir \textbf{cortes semanales} del dataset con \textbf{manifiesto y huella (hash)}, y guardar la \textbf{trazabilidad de cálculos} por corte para asegurar \textbf{reproducibilidad}.
+  \item FR-10 Cortes y trazabilidad: Emitir \textbf{cortes semanales} del dataset con \textbf{manifiesto y huella (hash)}, y guardar la \textbf{trazabilidad de cálculos} por corte para asegurar \textbf{reproducibilidad}.
 
-  \item[\textbf{FR-11 Descarga y API}] Permitir la descarga de resultados (CSV/PDF/PNG) y su consulta por API HTTP sencilla.
+  \item FR-11 Descarga y API: Permitir la descarga de resultados (CSV/PDF/PNG) y su consulta por API HTTP sencilla.
 
 \end{description}
 
 \subsection{Documentación (DOC)}
 \begin{description}
-  \item[\textbf{DOC-01 DER y diccionario}] Entregar diagrama de entidad-relación (DER) y diccionario de datos (definiciones, dominios, \textit{Primary Key / Foreign Key} (PK/FK)).
+  \item DOC-01 DER y diccionario: Entregar diagrama de entidad-relación (DER) y diccionario de datos (definiciones, dominios, \textit{Primary Key / Foreign Key} (PK/FK)).
 
-  \item[\textbf{DOC-02 Mapeo de fuentes}] Matriz Origen$\rightarrow$modelo unificado por campo (PMIS/ERP/Jira/HR).
+  \item DOC-02 Mapeo de fuentes: Matriz Origen$\rightarrow$modelo unificado por campo (PMIS/ERP/Jira/HR).
 
-  \item[\textbf{DOC-03 Manual de usuario}] Flujo de carga, validación, ejecución, dashboards y exportaciones con capturas.
+  \item DOC-03 Manual de usuario: Flujo de carga, validación, ejecución, dashboards y exportaciones con capturas.
 
-  \item[\textbf{DOC-04 Manual de operación}] Jobs, \textit{seeds}, variables, backups, rotación de contraseñas, monitoreo.
+  \item DOC-04 Manual de operación: Jobs, \textit{seeds}, variables, backups, rotación de contraseñas, monitoreo.
 
-  \item[\textbf{DOC-05 DOC-05 — Ficha del modelo y de la red bayesiana}] Datos, métricas, deriva de datos, límites de uso y política de re-entrenamiento; incluir en la ficha de la BN los nodos, observables y supuestos.
+  \item DOC-05 — Ficha del modelo y de la red bayesiana: Datos, métricas, deriva de datos, límites de uso y política de reentrenamiento; incluir en la ficha de la BN los nodos, observables y supuestos.
 
-  \item[\textbf{DOC-06 Plan de pruebas}] Casos de prueba para todos los requerimientos aplicables (funcionales, interfaz de usuario, integración, no funcionales, etc.), con criterios de aceptación y trazabilidad.
+  \item DOC-06 Plan de pruebas: Casos de prueba para todos los requerimientos aplicables (funcionales, interfaz de usuario, integración, no funcionales, etc.), con criterios de aceptación y trazabilidad.
 
 \end{description}
 
-% Seguir aquí
-
 \subsection{Testing (TEST)}
 \begin{description}
-  \item[\textbf{TEST-01 Pruebas unitarias de ETL}] Cobertura $\geq$ 80\% en los módulos de lectura y normalización de datos (parsers/normalizadores).
+  \item TEST-01 Pruebas unitarias de ETL: Cobertura $\geq$ 80\% en los módulos de lectura y normalización de datos (parsers/normalizadores).
 
-  \item[\textbf{TEST-02 Contrato de datos}] Validación del esquema durante la integración continua (CI); el proceso de build debe fallar ante cambios incompatibles.
+  \item TEST-02 Contrato de datos: Validación del esquema durante la integración continua (CI); el proceso de build debe fallar ante cambios incompatibles.
 
-  \item[\textbf{TEST-03 Validación de la red bayesiana (BN)}] Pruebas de posterior predictivo y análisis de sensibilidad de nodos para verificar la robustez de la BN.
+  \item TEST-03 Validación de la red bayesiana (BN): Pruebas de posterior predictivo y análisis de sensibilidad de nodos para verificar la robustez de la BN.
 
-  \item[\textbf{TEST-04 Modelo Monte Carlo}] Ejecuciones reproducibles (uso de semilla y validación de tolerancias en percentiles).
+  \item TEST-04 Modelo Monte Carlo: Ejecuciones reproducibles (uso de semilla y validación de tolerancias en percentiles).
 
-  \item[\textbf{TEST-05 Validación de modelos de ML}] Validación cruzada \textit{k-fold} con reporte de MAE/RMSE y verificación de curva de calibración aceptable.
+  \item TEST-05 Validación de modelos de ML: Validación cruzada \textit{k-fold} con reporte de MAE/RMSE y verificación de curva de calibración aceptable.
 
-  \item[\textbf{TEST-06 Backtesting}] Validación \textit{rolling-origin} vs. cortes históricos para EAC/fechas (MAE/RMSE y calibración).
+  \item TEST-06 Backtesting: Validación \textit{rolling-origin} vs. cortes históricos para EAC/fechas (MAE/RMSE y calibración).
 
-  \item[\textbf{TEST-07 Integración con APIs}] En caso que aplique, pruebas con simulación controlada para Jira/PMIS/ERP, incluyendo casos de borde (valores nulos y duplicados).
+  \item TEST-07 Integración con APIs: En caso que aplique, pruebas con simulación controlada para Jira/PMIS/ERP, incluyendo casos de borde (valores nulos y duplicados).
 
-  \item[\textbf{TEST-08 Desempeño del panel}] El dashboard inicial debe cargar en $\leq$ 5 segundos (p95) como meta ideal, y $\leq$ 10 segundos (p95) como meta mínima aceptable, para 12 meses de datos y 5,000 actividades.
+  \item TEST-08 Desempeño del panel: El dashboard inicial debe cargar en $\leq$ 5 segundos (p95) como meta ideal, y $\leq$ 10 segundos (p95) como meta mínima aceptable, para 12 meses de datos y 5,000 actividades.
 
-  \item[\textbf{TEST-09 Seguridad}] Escaneo de dependencias y contraseñas, con verificación de controles básicos de acceso (RBAC)
+  \item TEST-09 Seguridad: Escaneo de dependencias y contraseñas, con verificación de controles básicos de acceso (RBAC)
 
-  \item[\textbf{TEST-10 Pruebas de aceptación de usuario (UAT)}] Ejecución de 10 escenarios de negocio validados y firmados por el cliente.
+  \item TEST-10 Pruebas de aceptación de usuario (UAT): Ejecución de 10 escenarios de negocio validados y firmados por el cliente.
 
 \end{description}
 
 \subsection{Interfaz de usuario (UI)}
 \begin{description}
-  \item[\textbf{UI-01 Diseño web adaptable}] Visualización correcta en pantallas desde 1366$\times$768 en adelante; versión móvil de solo lectura.
+  \item UI-01 Diseño web adaptable: Visualización correcta en pantallas desde 1366$\times$768 en adelante; versión móvil de solo lectura.
 
-  \item[\textbf{UI-02 Indicadores claros (KPI)}] Tarjetas con EAC P50/P80/P90, $P(\text{EAC}>\text{BAC})$, TCPI con leyenda.
+  \item UI-02 Indicadores claros (KPI): Tarjetas con EAC P50/P80/P90, $P(\text{EAC}>\text{BAC})$, TCPI con leyenda.
 
-  \item[\textbf{UI-03 Gráficos principales}] S-curves, histograma de simulaciones, tendencias CPI/SPI y \textit{waterfall} de EAC.
+  \item UI-03 Gráficos principales: S-curves, histograma de simulaciones, tendencias CPI/SPI y \textit{waterfall} de EAC.
 
-  \item[\textbf{UI-04 Navegación y trazabilidad}] Flujo de exploración: Entregable $\rightarrow$ Actividades $\rightarrow$ Riesgos/Cambios vinculados.
+  \item UI-04 Navegación y trazabilidad: Flujo de exploración: Entregable $\rightarrow$ Actividades $\rightarrow$ Riesgos/Cambios vinculados.
 
-  \item[\textbf{UI-05 Explicabilidad combinada}] Panel de \textbf{SHAP/feature importance} (ML) y sensibilidad bayesiana (efecto de observables en posteriors), acompañado de texto breve.
+  \item UI-05 Explicabilidad combinada: Panel de \textbf{SHAP/feature importance} (ML) y sensibilidad bayesiana (efecto de observables en posteriors), acompañado de texto breve.
 
-   \item[\textbf{UI-06 Exportación}] Exportar vistas clave en CSV, PDF y PNG con un solo clic.
+   \item UI-06 Exportación: Exportar vistas clave en CSV, PDF y PNG con un solo clic.
 
 \end{description}
 
 \subsection{Datos (DATA)}
 \begin{description}
-  \item[\textbf{DATA-01 Modelo unificado (DER vigente)}] Usar únicamente las columnas definidas en el esquema oficial; no se permiten campos extra ad-hoc.
+  \item DATA-01 Modelo unificado (DER vigente): Usar únicamente las columnas definidas en el esquema oficial; no se permiten campos extra ad-hoc.
 
-  \item[\textbf{DATA-02 Formato de fechas}] Todas las fechas en formato YYYY-MM-DD y status\_date semanal consistente.
+  \item DATA-02 Formato de fechas: Todas las fechas en formato YYYY-MM-DD y status\_date semanal consistente.
 
-  \item[\textbf{DATA-03 Identificadores (IDs)}] Únicos, estables, sin espacios; no reciclar IDs.
+  \item DATA-03 Identificadores (IDs): Únicos, estables, sin espacios; no reciclar IDs.
 
-  \item[\textbf{DATA-04 Calidad de datoa}] Valores faltantes deben estar explícitos (no NaN); acumulados no pueden decrecer; moneda consistente dentro de cada proyecto.
+  \item DATA-04 Calidad de datoa: Valores faltantes deben estar explícitos (no NaN); acumulados no pueden decrecer; moneda consistente dentro de cada proyecto.
 
-  \item[\textbf{DATA-05 Temporalidad}] Separar \textit{train/val/test} por tiempo (sin datos futuros); usar solo datos hasta cada fecha de corte.
+  \item DATA-05 Temporalidad: Separar \textit{train/val/test} por tiempo (sin datos futuros); usar solo datos hasta cada fecha de corte.
 
 \end{description}
 
 \subsection{De despliegue/DevOps (DEV)}
 \begin{description}
-  \item[\textbf{DEV-01 Empaquetado}] Implementación en \textit{Docker}, usando variables de entorno para rutas y credenciales.
+  \item DEV-01 Empaquetado: Implementación en Docker, usando variables de entorno para rutas y credenciales.
 
-  \item[\textbf{DEV-02 Datos de ejemplo (seeds)}] Dataset demo reproducible para pruebas y aceptación de usuario (UAT).
+  \item DEV-02 Datos de ejemplo (seeds): Dataset demo reproducible para pruebas y aceptación de usuario (UAT).
   
-  \item[\textbf{DEV-03 Jobs automáticos}] Orquestación del corte semanal y generación de reportes/exportables.
+  \item DEV-03 Jobs automáticos: Orquestación del corte semanal y generación de reportes/exportables.
   
-  \item[\textbf{DEV-04 Copias de respaldo (backups)}] Retención de snapshots y outputs durante al menos 6 meses, con verificación periódica de restauración.
+  \item DEV-04 Copias de respaldo (backups): Retención de snapshots y outputs durante al menos 6 meses, con verificación periódica de restauración.
   
-  \item[\textbf{DEV-05 Operaciones de ML (MLOps)}] Registro de modelos, versionado de artefactos (modelo, features, semillas) y política de reentrenamiento.
+  \item DEV-05 Operaciones de ML (MLOps): Registro de modelos, versionado de artefactos (modelo, features, semillas) y política de reentrenamiento.
 
+\end{description}
+
+\subsection{Regulaciones y Normas (REG)}
+\begin{description}
+  \item REG-01 Cumplimiento de privacidad de datos: Garantizar que los datasets utilizados no contengan información personal identificable (PII), en línea con GDPR y normativas locales de protección de datos.
+  \item REG-02 Estándares de seguridad: Aplicar buenas prácticas recomendadas por OWASP y NIST para asegurar integridad y confidencialidad de la información procesada.
+  \item REG-03 Normas de gestión de proyectos: Asegurar la trazabilidad y documentación conforme a estándares PMI/PMBOK para auditorías o revisiones externas.
+  \item REG-04 Reproducibilidad y calidad: Mantener versionado y trazabilidad de datasets, modelos y reportes, en línea con principios FAIR (\textit{Findable}, \textit{Accessible}, \textit{Interoperable}, \textit{Reusable}).
 \end{description}
 
 
 \section{7. Historias de usuarios (\textit{Product backlog})}
 \label{sec:backlog}
 
-La estimación de cada historia se basa en \textbf{complejidad}, \textbf{dificultad} e \textbf{incertidumbre}.
+La estimación de cada historia se basa en complejidad, dificultad e incertidumbre.
 Si la suma excede el máximo usual (20), se revisan las ponderaciones, especialmente la incertidumbre, ajustándolas a la realidad del SPCP donde los datos y modelos ya están definidos.
-De esta forma se evita inflar artificialmente las estimaciones y se mantiene la coherencia con la escala de Fibonacci modificada.
+De esta forma se evita incrementar artificialmente las estimaciones y se mantiene la coherencia con la escala de Fibonacci modificada.
 
-\subsection*{Backlog inicial:}
+\subsection{Backlog inicial:}
 
-\begin{enumerate}
+  \begin{enumerate}
   \item Como jefe de PMs (cliente interno) quiero comparar el desempeño de todos mis proyectos en un panel consolidado para identificar rápidamente cuáles necesitan intervención.\\
   \textit{Story points: 20 (complejidad 6, dificultad 6, incertidumbre 5)}
 
@@ -663,60 +686,82 @@ De esta forma se evita inflar artificialmente las estimaciones y se mantiene la 
 
   \item Como usuario externo al sistema quiero consultar un servicio sencillo que me entregue percentiles y alertas para integrar los resultados del SPCP en otras aplicaciones.\\
   \textit{Story points: 5 (complejidad 2, dificultad 2, incertidumbre 1)}
-\end{enumerate}
+
+  \end{enumerate}
 
 \section{8. Entregables principales del proyecto}
 \label{sec:entregables}
 
-\begin{consigna}{red}
-Los entregables del proyecto son (ejemplo):
+Los entregables constituyen los productos concretos generados por el proyecto SPCP, necesarios para su implementación, uso y validación académica. Incluyen tanto artefactos técnicos (código, modelos, datasets) como documentación de soporte para asegurar la reproducibilidad y transferencia del conocimiento.
 
 \begin{itemize}
-	\item Manual de usuario.
-	\item Diagrama de circuitos esquemáticos.
-	\item Código fuente del firmware.
-	\item Diagrama de instalación.
-	\item Memoria del trabajo final.
-	\item etc...
+  \item Diagrama del proceso (\textit{pipeline}): representación gráfica de las etapas del SPCP, desde la ingesta de datos hasta la generación de reportes y alertas.
+  \item Diseño funcional: documentación del flujo de procesos y modelos, definición de la estructura de datos (DER) y especificación de la lógica de cálculo de cada modelo probabilístico y de \textit{machine learning}.
+  \item Código fuente: repositorio con scripts y notebooks en Python, que implementan los modelos probabilísticos (Monte Carlo, Bayesian Networks) y de \textit{machine learning}.
+  \item Datasets de prueba: conjunto de datos anonimizados utilizados para validar el sistema y demostrar su aplicabilidad en diferentes escenarios de proyecto.
+  \item Manual de usuario: guía práctica para jefes de proyecto y analistas de riesgo sobre el uso del sistema, paneles y visualizaciones.
+  \item Manual técnico: documentación para desarrolladores que describe la arquitectura, dependencias, configuración del entorno y procedimientos de despliegue.
+  \item Reportes ejecutivos: ejemplos de salidas en formato CSV, PDF y PNG (S-curves, histogramas de simulación, tablas ejecutivas).
+  \item Memoria del trabajo final: documento académico completo que detalla el desarrollo, fundamentos teóricos, resultados y conclusiones del proyecto.
 \end{itemize}
-\end{consigna}
 
-\section{9. Desglose del trabajo en tareas}
+
+\section{9. Desglose del trabajo en tareas (EDT/WBS)}
 \label{sec:wbs}
 
-\begin{consigna}{red}
-El WBS debe tener relación directa o indirecta con los requerimientos.  Son todas las actividades que se harán en el proyecto para dar cumplimiento a los requerimientos. Se recomienda mostrar el WBS mediante una lista indexada:
+El trabajo del proyecto se organiza en cinco fases principales que reflejan el ciclo de vida de desarrollo y puesta en marcha del SPCP. 
+Cada fase agrupa actividades y tareas derivadas de los requerimientos definidos en la sección 6, así como los entregables asociados a cada paquete de trabajo.
 
 \begin{enumerate}
-\item Grupo de tareas 1 (suma h)
-	\begin{enumerate}
-	\item Tarea 1 (tantas h)
-	\item Tarea 2 (tantas h)
-	\item Tarea 3 (tantas h)
-	\end{enumerate}
-\item Grupo de tareas 2 (suma h)
-	\begin{enumerate}
-	\item Tarea 1 (tantas h)
-	\item Tarea 2 (tantas h)
-	\item Tarea 3 (tantas h)
-	\end{enumerate}
-\item Grupo de tareas 3 (suma h)
-	\begin{enumerate}
-	\item Tarea 1 (tantas h)
-	\item Tarea 2 (tantas h)
-	\item Tarea 3 (tantas h)
-	\item Tarea 4 (tantas h)
-	\item Tarea 5 (tantas h)
-	\end{enumerate}
+  \item Preparación (suma 50 h)
+    \begin{itemize}
+      \item Revisión de objetivos y alcance (15 h). Entregable: acta de alcance preliminar.
+      \item Preparación de entorno de desarrollo y control de versiones (15 h). Entregable: repositorio inicial con estructura y configuración (Docker/Poetry).
+      \item Planificación de pruebas y criterios de aceptación (20 h). Entregable: plan de pruebas preliminar (DOC-06).
+    \end{itemize}
+
+  \item Diseño (suma 120 h)
+    \begin{itemize}
+      \item Modelo de datos unificado: DER, diccionario y mapeo de fuentes (40 h). Entregables: DER vigente y diccionario de datos, matriz de mapeo de fuentes (DOC-01, DOC-02, DATA-01).
+      \item Diseño funcional: procesos, lógica de cálculo y ensamble de modelos (40 h). Entregable: documento de diseño funcional (FR-02 a FR-07).
+      \item Prototipo de panel ejecutivo y definición de KPIs (40 h). Entregable: mockups del dashboard con indicadores clave (UI-01, UI-02).
+    \end{itemize}
+
+  \item Construcción y pruebas (suma 270 h)
+    \begin{itemize}
+      \item Ingesta y validación de datos (ETL, contrato de datos) (25 h). Entregables: pipeline de ingestión/normalización y validaciones automáticas; contrato de datos en CI (FR-01, FR-02, DATA-01 a DATA-05, TEST-02).
+      \item Implementación de métricas EVM (25 h). Entregable: módulo de cálculo EVM (FR-03).
+      \item Simulación Monte Carlo (30 h). Entregables: módulo de simulación y reporte de percentiles (FR-04, TEST-04).
+      \item Red bayesiana de desempeño (30 h). Entregables: red bayesiana implementada y ficha de modelo (FR-05, DOC-05).
+      \item Modelos de ML y calibración (40 h). Entregables: modelos entrenados, MAE/RMSE y curva de calibración (FR-06, TEST-05, TEST-06).
+      \item Ensamble de señales (30 h). Entregable: componente de fusión EVM+Bayes+ML (FR-07).
+      \item Dashboard: curvas S, histogramas, navegación y explicabilidad (35 h). Entregables: panel interactivo y módulo de explicabilidad (FR-08, UI-03, UI-04, UI-05).
+      \item Escenarios \textit{what-if} (25 h). Entregable: módulo de escenarios con recálculo de percentiles y probabilidades (FR-09).
+      \item Exportaciones y API (30 h). Entregables: vistas exportables CSV/PDF/PNG y endpoints HTTP (UI-06, FR-11, TEST-07).
+    \end{itemize}
+
+  \item Preparación final (suma 110 h)
+    \begin{itemize}
+      \item Documentación: manual de usuario y operación (25 h). Entregables: manual de usuario (DOC-03) y manual de operación (DOC-04).
+      \item Ficha de modelos y BN (20 h). Entregable: documento técnico de modelos y BN (DOC-05).
+      \item Dataset demo reproducible (15 h). Entregable: dataset de ejemplo para pruebas/UAT (DEV-02).
+      \item Cortes, manifiesto y trazabilidad de cálculos (15 h). Entregables: snapshots semanales con manifiesto/huella y trazabilidad (FR-10).
+      \item Validaciones finales: backtesting, UAT y performance del panel (35 h). Entregables: reportes de validación/aceptación (TEST-06, TEST-08, TEST-10).
+    \end{itemize}
+
+  \item Salida en vivo y soporte (suma 70 h)
+    \begin{itemize}
+      \item Despliegue en contenedores y orquestación (25 h). Entregables: imágenes y jobs automáticos de corte semanal (DEV-01, DEV-03).
+      \item Copias de respaldo y restauración (15 h). Entregable: política de backups con verificación de restauración (DEV-04).
+      \item Cumplimiento normativo y seguridad (15 h). Entregables: checklist de cumplimiento y reporte de pruebas de seguridad (REG-01 a REG-04, TEST-09).
+      \item Soporte inicial y ajustes post-salida (15 h). Entregables: informe de soporte inicial y registro de incidencias.
+    \end{itemize}
 \end{enumerate}
 
-Cantidad total de horas: tantas.
+Total estimado: 620 h
 
-\textbf{¡Importante!:} la unidad de horas es h y va separada por espacio del número. Es incorrecto escribir ``23hs".
+Nota: Al esfuerzo estimado inicial de 470 horas se aplica un margen de seguridad del 30\%, considerando la complejidad técnica y los riesgos de validación y despliegue. 
 
-\textbf{Se recomienda que no haya ninguna tarea que lleve más de 40 h.} De ser así se recomienda dividirla en tareas de menor duración.
-
-\end{consigna}
 
 \section{10. Diagrama de Activity On Node}
 \label{sec:AoN}
