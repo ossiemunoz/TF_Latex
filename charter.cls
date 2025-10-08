@@ -29,6 +29,7 @@
 \RequirePackage[english, spanish]{babel}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[]{graphicx}
+\graphicspath{{Figuras/}}
 \RequirePackage{lastpage}
 \RequirePackage[table]{xcolor}
 \RequirePackage{multirow}
@@ -52,7 +53,7 @@
 \RequirePackage{booktabs}
 \RequirePackage{makecell}
 \RequirePackage{hyphenat}
-
+\RequirePackage{enumitem}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \newcolumntype{T}{>{\raggedright\arraybackslash}X}
 
