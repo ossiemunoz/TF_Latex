@@ -1,0 +1,124 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" version="28.2.5">
+  <diagram name="Página-1" id="6CAupsV__flEeniP3BK9">
+    <mxGraphModel dx="2046" dy="623" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="FbaqpglJVMi_n5HGXFX3-2" value="Diagrama &lt;i&gt;Activity on Node&lt;/i&gt; (AoN) - Sistema SPCP - Fases 1 y 2" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="-1040" y="40" width="360" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="FbaqpglJVMi_n5HGXFX3-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="FbaqpglJVMi_n5HGXFX3-3" target="FbaqpglJVMi_n5HGXFX3-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FbaqpglJVMi_n5HGXFX3-3" value="Inicio&lt;div&gt;DD/MM/AAAA&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_2;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-1040" y="120" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="FbaqpglJVMi_n5HGXFX3-4" value="1.A&lt;div&gt;Planificación de la fase&lt;div&gt;t=1 d&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;align=center;" parent="1" vertex="1">
+          <mxGeometry x="-920" y="120" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="FbaqpglJVMi_n5HGXFX3-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="FbaqpglJVMi_n5HGXFX3-5" target="FbaqpglJVMi_n5HGXFX3-6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FbaqpglJVMi_n5HGXFX3-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="FbaqpglJVMi_n5HGXFX3-5" target="FbaqpglJVMi_n5HGXFX3-6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FbaqpglJVMi_n5HGXFX3-5" value="1.B&lt;div&gt;Revisión de objetivos y alcance&lt;div&gt;t=3 d&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;align=center;" parent="1" vertex="1">
+          <mxGeometry x="-760" y="120" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="FbaqpglJVMi_n5HGXFX3-6" value="1.C&lt;div&gt;Preparación de entorno y control de versiones&lt;div&gt;t=3 d&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;align=center;" parent="1" vertex="1">
+          <mxGeometry x="-600" y="120" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="FbaqpglJVMi_n5HGXFX3-7" value="1.D&lt;div&gt;&lt;div&gt;Planificación de pruebas y CA&lt;/div&gt;&lt;div&gt;t=4 d&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;align=center;" parent="1" vertex="1">
+          <mxGeometry x="-600" y="240" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="FbaqpglJVMi_n5HGXFX3-8" value="QG1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-440" y="200" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="FbaqpglJVMi_n5HGXFX3-10" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="FbaqpglJVMi_n5HGXFX3-4" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-790" y="159.99" as="sourcePoint" />
+            <mxPoint x="-760" y="160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FbaqpglJVMi_n5HGXFX3-11" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-640" y="159.99" as="sourcePoint" />
+            <mxPoint x="-600" y="159.57999999999998" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FbaqpglJVMi_n5HGXFX3-12" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" target="FbaqpglJVMi_n5HGXFX3-7" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-640" y="160" as="sourcePoint" />
+            <mxPoint x="-590" y="220" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-620" y="160" />
+              <mxPoint x="-620" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FbaqpglJVMi_n5HGXFX3-13" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="FbaqpglJVMi_n5HGXFX3-8" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-480" y="160" as="sourcePoint" />
+            <mxPoint x="-440" y="280" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-460" y="160" />
+              <mxPoint x="-460" y="220" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FbaqpglJVMi_n5HGXFX3-14" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="FbaqpglJVMi_n5HGXFX3-8" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-480" y="279.58000000000004" as="sourcePoint" />
+            <mxPoint x="-440" y="279.58000000000004" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-460" y="280" />
+              <mxPoint x="-460" y="220" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FbaqpglJVMi_n5HGXFX3-15" value="F2" style="verticalLabelPosition=middle;verticalAlign=middle;html=1;shape=mxgraph.flowchart.on-page_reference;labelPosition=center;align=center;" parent="1" vertex="1">
+          <mxGeometry x="-360" y="200" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="FbaqpglJVMi_n5HGXFX3-20" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;" parent="1" source="FbaqpglJVMi_n5HGXFX3-8" target="FbaqpglJVMi_n5HGXFX3-15" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-390" y="224.57999999999998" as="sourcePoint" />
+            <mxPoint x="-350" y="224.57999999999998" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FbaqpglJVMi_n5HGXFX3-21" value="F2" style="verticalLabelPosition=middle;verticalAlign=middle;html=1;shape=mxgraph.flowchart.on-page_reference;labelPosition=center;align=center;" parent="1" vertex="1">
+          <mxGeometry x="-1040" y="460" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="FbaqpglJVMi_n5HGXFX3-22" value="2.A&lt;div&gt;Planificación de la fase&lt;div&gt;t=1 d&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;align=center;" parent="1" vertex="1">
+          <mxGeometry x="-920" y="440" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="FbaqpglJVMi_n5HGXFX3-23" value="2.B&lt;div&gt;Modelo de datos unificar (DER)&lt;div&gt;t=8 d&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;align=center;" parent="1" vertex="1">
+          <mxGeometry x="-760" y="440" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="FbaqpglJVMi_n5HGXFX3-24" value="2.C&lt;div&gt;Diseño funcional&lt;div&gt;t=8 d&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;align=center;" parent="1" vertex="1">
+          <mxGeometry x="-760" y="560" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="FbaqpglJVMi_n5HGXFX3-25" value="2.D&lt;div&gt;Prototipo de panel ejecutivo&lt;div&gt;t=8 d&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;align=center;" parent="1" vertex="1">
+          <mxGeometry x="-600" y="500" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="FbaqpglJVMi_n5HGXFX3-28" value="QG2" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-440" y="520" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="FbaqpglJVMi_n5HGXFX3-29" value="F3" style="verticalLabelPosition=middle;verticalAlign=middle;html=1;shape=mxgraph.flowchart.on-page_reference;labelPosition=center;align=center;" parent="1" vertex="1">
+          <mxGeometry x="-360" y="520" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="FbaqpglJVMi_n5HGXFX3-30" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;" parent="1" source="FbaqpglJVMi_n5HGXFX3-28" target="FbaqpglJVMi_n5HGXFX3-29" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-390" y="544.5799999999999" as="sourcePoint" />
+            <mxPoint x="-350" y="544.5799999999999" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FbaqpglJVMi_n5HGXFX3-32" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="FbaqpglJVMi_n5HGXFX3-21" target="FbaqpglJVMi_n5HGXFX3-22" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-990" y="479.5" as="sourcePoint" />
+            <mxPoint x="-950" y="479.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
