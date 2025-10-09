@@ -802,18 +802,16 @@ Este AoN constituye una planificación de alto nivel, sobre la cual se construir
 
 \begin{figure}[ht]
   \centering
-  \def\svgwidth{\textwidth}
-  \input{Figuras/TF_AoN_00.pdf_tex}
+  \includegraphics[width=\textwidth]{Figuras/TF_AoN_00.drawio.pdf}
   \caption{Diagrama \textit{Activity on Node} (AoN) del sistema SPCP.}
-    \label{fig:TF_AoN_00}
+  \label{fig:TF_AoN_00}
 \end{figure}
 
 \FloatBarrier
 
 \begin{figure}[ht]
   \centering
-  \def\svgwidth{\textwidth}
-  \input{Figuras/TF_AoN_01_01.pdf_tex}
+  \includegraphics[width=\textwidth]{Figuras/TF_AoN_01_01.drawio.pdf}
   \caption{Diagrama \textit{Activity on Node} (AoN) Fases 1 y 2 del sistema SPCP.}
     \label{fig:TF_AoN_01_01}
 \end{figure}
@@ -822,9 +820,8 @@ Este AoN constituye una planificación de alto nivel, sobre la cual se construir
 
 \begin{figure}[ht]
   \centering
-  \def\svgwidth{0.90\textwidth}
-  \input{Figuras/TF_AoN_01_02.pdf_tex}
-  \caption{Diagrama \textit{Activity on Node} (AoN) Fase 3 del sistema SPCP.}
+  \includegraphics[width=\textwidth]{Figuras/TF_AoN_01_02.drawio.pdf}
+    \caption{Diagrama \textit{Activity on Node} (AoN) Fase 3 del sistema SPCP.}
     \label{fig:TF_AoN_01_02}
 \end{figure}
 
@@ -832,8 +829,7 @@ Este AoN constituye una planificación de alto nivel, sobre la cual se construir
 
 \begin{figure}[ht]
   \centering
-  \def\svgwidth{0.90\textwidth}
-  \input{Figuras/TF_AoN_01_03.pdf_tex}
+  \includegraphics[width=\textwidth]{Figuras/TF_AoN_01_03.drawio.pdf}
   \caption{Diagrama \textit{Activity on Node} (AoN) Fases 4 y 5 del sistema SPCP.}
     \label{fig:TF_AoN_01_03}
 \end{figure}
@@ -1016,15 +1012,15 @@ Entrenamiento a PMs en lectura de percentiles, leyendas claras en dashboard y ej
 \end{table}
 \FloatBarrier
 
-Se representa en el siguiente cuadro la matriz de riesgos en un \textit{heatmap}, donde se visualizan las combinaciones de Severidad y Ocurrencia, y se destaca en rojo los riesgos más críticos (RPN>40) que requieren atención prioritaria.
+Se representa en el siguiente matriz de riesgos un \textit{heatmap}, donde se visualizan las combinaciones de Severidad y Ocurrencia, y se destaca en rojo los riesgos más críticos (RPN>40) que requieren atención prioritaria.
 
-\begin{center}
-  \includegraphics[width=0.75\textwidth]{TF_Heatmap_Risk.pdf}
-  \captionof{figure}{Mapa de calor de riesgos según el valor del RPN (rojo indica críticos >40).}
+\begin{figure}[H]
+  \centering
+  \includegraphics[trim=65 213 65 65,clip,width=0.7\textwidth]{Figuras/TF_Heatmap_Risk.pdf}
+  \caption{Mapa de calor de riesgos según el valor del RPN (rojo indica críticos >40).}
   \label{fig:TF_Heatmap_Risk}
-\end{center}
+\end{figure}
 \FloatBarrier
-
 
 \section{14. Gestión de la calidad}
 \label{sec:calidad}
