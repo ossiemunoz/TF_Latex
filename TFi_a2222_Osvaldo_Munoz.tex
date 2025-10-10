@@ -442,7 +442,7 @@ TCPI_{EAC} &= \frac{EAC - EV}{EAC - AC}
 && \text{(para cumplir con un nuevo objetivo EAC)}
 \end{aligned}
 \]
-\textit{Lectura:} $TCPI>1$ implica \textbf{presión de costo}, será necesario mejorar la eficiencia para alcanzar la meta (BAC/EAC); $TCPI<1$ implica \textbf{margen de costo}, es posible cumplir, aun con una eficiencia menor a la actual.
+\textit{Lectura:} $TCPI>1$ implica presión de costo, será necesario mejorar la eficiencia para alcanzar la meta (BAC/EAC); $TCPI<1$ implica margen de costo, es posible cumplir, aun con una eficiencia menor a la actual.
 
 \paragraph{PERT (duraciones) y Monte Carlo}
 Para una actividad con estimaciones $(a,m,b)$:
@@ -555,13 +555,13 @@ De esta manera, los requerimientos no solo contemplan la funcionalidad analític
 
   \item FR-06 ML baseline: El sistema debe entrenar un modelo ML (p.ej., XGBoost) para EAC a t+4 semanas y probabilidad de sobrecosto $>10\%$, con importancia/SHAP.
 
-  \item FR-07 Fusión de señales y fiabilidad: El sistema debe combinar \textbf{EVM + Bayes + ML} mediante \textit{ensamble} (promedio ponderado o stacking) para producir: (i) \textbf{EAC final} y (ii) \textbf{probabilidad de sobrecosto}. 
+  \item FR-07 Fusión de señales y fiabilidad: El sistema debe combinar EVM + Bayes + ML mediante \textit{ensamble} (promedio ponderado o stacking) para producir: (i) EAC final y (ii) probabilidad de sobrecosto. 
 
-  \item FR-08 Visualización ejecutiva: El sistema debe presentar un \textbf{panel de indicadores ejecutivos} (KPIs de cabecera: P50/P80/P90 de EAC, $P(\text{EAC}>\text{BAC})$, TCPI), además de \textbf{curvas S}, \textbf{histograma de simulaciones} y una \textbf{tabla ejecutiva} con descarga CSV/PDF.
+  \item FR-08 Visualización ejecutiva: El sistema debe presentar un panel de indicadores ejecutivos (KPIs de cabecera: P50/P80/P90 de EAC, $P(\text{EAC}>\text{BAC})$, TCPI), además de curvas S, histograma de simulaciones y una tabla ejecutiva con descarga CSV/PDF.
 
   \item FR-09 Escenarios: El sistema debe permitir al usuario \textit{“what-if”} (cambios/riesgos) y recalcular percentiles y $P(\text{EAC}>\text{BAC})$.
 
-  \item FR-10 Cortes y trazabilidad: El sistema debe emitir \textbf{cortes semanales} del dataset con \textbf{manifiesto y huella (hash)}, y guardar la \textbf{trazabilidad de cálculos} por corte para asegurar \textbf{reproducibilidad}.
+  \item FR-10 Cortes y trazabilidad: El sistema debe emitir cortes semanales del dataset con manifiesto y huella (hash), y guardar la trazabilidad de cálculos por corte para asegurar reproducibilidad.
 
   \item FR-11 Descarga y API: El sistema debe permitir la descarga de resultados (CSV/PDF/PNG) y su consulta por API HTTP sencilla.
 
@@ -617,7 +617,7 @@ De esta manera, los requerimientos no solo contemplan la funcionalidad analític
 
   \item UI-04 Navegación y trazabilidad: El usuario debe validar el flujo de exploración: Entregable $\rightarrow$ Actividades $\rightarrow$ Riesgos/Cambios vinculados.
 
-  \item UI-05 Explicabilidad combinada: El usuario debe validar que el panel de \textbf{SHAP/feature importance} (ML) y sensibilidad bayesiana (efecto de observables en posteriors), estén acompañados de texto breve.
+  \item UI-05 Explicabilidad combinada: El usuario debe validar que el panel de SHAP/feature importance (ML) y sensibilidad bayesiana (efecto de observables en posteriors), estén acompañados de texto breve.
 
    \item UI-06 Exportación: El usuario debe validar que la exportación de vistas clave en CSV, PDF y PNG sea con un solo clic.
 
@@ -846,12 +846,24 @@ En este caso, el cronograma total previsto es de 24 semanas, con fases secuencia
 De esta manera, el Gantt se convierte en la herramienta principal de seguimiento y comunicación del avance del SPCP.
 
 \begin{figure}[ht]
-  \centering
-  \includegraphics[trim=0 194 0 65,clip,width=\textwidth]{Figuras/CEIA_TF_SPCP_Gantt_p03.pdf}
+  \makebox[\textwidth][c]{%
+    \includegraphics[
+      width=1.10\textwidth,  % 25 % más ancho que el texto
+      trim=0 30 40 65, clip
+    ]{Figuras/CEIA_TF_SPCP_Gantt_p03.pdf}%
+  }
   \caption{Cronograma del proyecto representado en diagrama de Gantt.}
-  \label{fig:gantt_p04}
+  \label{fig:gantt_p03}
 \end{figure}
 \FloatBarrier
+
+%\begin{figure}[ht]
+%  \centering
+%  \includegraphics[trim=0 30 15 65,clip,width=\textwidth]{Figuras/CEIA_TF_SPCP_Gantt_p03.pdf}
+%  \caption{Cronograma del proyecto representado en diagrama de Gantt.}
+%  \label{fig:gantt_p04}
+%\end{figure}
+%\FloatBarrier
 
 
 \section{12. Presupuesto detallado del proyecto}
@@ -911,12 +923,11 @@ obteniéndose el Número de Prioridad de Riesgo ($RPN = S \times O$), que permit
 
 Se considera un RPN máximo aceptable de 40, por encima del cual se implementarán planes de mitigación específicos para reducir la severidad o probabilidad de ocurrencia.
 
-% Primera parte, revisar versión pdf y ajustar
 \begin{table}[ht]
 \centering
 \scriptsize
-\caption{Matriz de riesgos del proyecto (evaluación inicial) - Parte 1.}
-\label{tab:riesgos-a}
+\caption{Matriz de riesgos del proyecto (evaluación inicial).}
+\label{tab:riesgos}
 \begin{tabularx}{\textwidth}{cXccccX}
 \toprule
 \textbf{ID} & \textbf{Riesgo} & \textbf{S} & \textbf{O} & \textbf{RPN} & \textbf{Prioridad} & \textbf{Acciones de mitigación} \\
@@ -929,22 +940,6 @@ R2 & Fallas en integración ETL/API. & 7 & 6 & 42 & 3 &
 Implementar versionado de esquemas, control de errores y pruebas automáticas en CI/CD. \\
 R5 & Retrasos en validación o aprobación de Quality Gates. & 7 & 6 & 42 & 4 &
 Planificar QG con anticipación, identificar autorizador alterno y checklist de aceptación previa. \\
-\bottomrule
-\end{tabularx}
-\end{table}
-
-\newpage
-
-% Segunda parte, revisar versión pdf y ajustar
-\begin{table}[ht]
-\centering
-\scriptsize
-\caption{Matriz de riesgos del proyecto (evaluación inicial) - Parte 2.}
-\label{tab:riesgos-b}
-\begin{tabularx}{\textwidth}{cXccccX}
-\toprule
-\textbf{ID} & \textbf{Riesgo} & \textbf{S} & \textbf{O} & \textbf{RPN} & \textbf{Prioridad} & \textbf{Acciones de mitigación} \\
-\midrule
 R10 & Interpretación errónea de probabilidades y percentiles. & 7 & 6 & 42 & 5 &
 Entrenamiento a PMs en lectura de percentiles, leyendas claras en dashboard y ejemplos guiados. \\
 R8 & Fallas de versionado o trazabilidad de artefactos. & 8 & 5 & 40 & 6 &
@@ -1011,13 +1006,13 @@ Entrenamiento a PMs en lectura de percentiles, leyendas claras en dashboard y ej
 \bottomrule
 \end{tabularx}
 \end{table}
-\FloatBarrier
+%\FloatBarrier
 
-Se representa en el siguiente matriz de riesgos un \textit{heatmap}, donde se visualizan las combinaciones de Severidad y Ocurrencia, y se destaca en rojo los riesgos más críticos (RPN>40) que requieren atención prioritaria.
+Se representa la matriz de riesgos en un \textit{heatmap}, donde se visualizan las combinaciones de Severidad y Ocurrencia, y se destaca en rojo los que requieren atención prioritaria.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[trim=65 213 65 65,clip,width=0.7\textwidth]{Figuras/TF_Heatmap_Risk.pdf}
+  \includegraphics[trim=65 213 65 65,clip,width=0.65\textwidth]{Figuras/TF_Heatmap_Risk.pdf}
   \caption{Mapa de calor de riesgos según el valor del RPN (rojo indica críticos >40).}
   \label{fig:TF_Heatmap_Risk}
 \end{figure}
@@ -1033,7 +1028,7 @@ Las acciones de verificación consideran al entregable como una "caja blanca", e
 Las acciones de validación, en cambio, tratan al entregable como una "caja negra", evaluando su comportamiento externo, la percepción del usuario, la conformidad del cliente o la coherencia con los objetivos del proyecto.  
 En ambos casos se contemplan consultas con expertos, mediciones, o contrastes con datos reales o simulados según corresponda.
 
-A continuación, se describen las verificaciones y validaciones correspondientes a 13 requerimientos seleccionados.
+A continuación, se describen la verificación y validación correspondientes a 13 requerimientos seleccionados.
 
 \begin{itemize}
 
@@ -1151,7 +1146,7 @@ El acta de lecciones aprendidas será publicada en el repositorio del proyecto y
 \subsection{Agradecimientos y reconocimiento al equipo}
 La organización del acto de agradecimiento estará a cargo del PM, con apoyo administrativo y logístico del área de operaciones académicas.  
 Durante este evento se presentarán los resultados finales, se reconocerá el aporte de los integrantes del equipo de trabajo y se agradecerá a los colaboradores externos y asesores académicos.  
-Los gastos asociados (logística, materiales, refrigerios) serán financiados con cargo al presupuesto del proyecto en el rubro de indirectos $"Gastos administrativos"$ asignado al Trabajo Final.
+Los gastos asociados (logística, materiales, refrigerios) serán financiados con cargo al presupuesto del proyecto en el rubro de indirectos $"$Gastos administrativos$"$ asignado al Trabajo Final.
 
 Finalmente, se elaborará un informe de cierre que consolidará toda la documentación del proyecto (actas, entregables finales, métricas de desempeño, resultados de pruebas, lecciones aprendidas y reconocimientos), constituyendo la versión definitiva del SPCP para archivo y referencia.
 
